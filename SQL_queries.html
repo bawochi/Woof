@@ -21,47 +21,22 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
 } 
-if (value == 1) {
-    $sql = "SELECT id, firstname, lastname FROM MyGuests";
-$result = $conn->query($sql);
-}
-else 
-if (value == 2) {
-    $sql = "SELECT id, firstname, lastname FROM MyGuests";
-$result = $conn->query($sql);
-}
-else 
-if (value == 3) {
-    $sql = "DELETE id, firstname, lastname FROM MyGuests";
-$result = $conn->query($sql);
-}
-else 
-if (value == 4) {
-    $sql = "DELETE id, firstname, lastname FROM MyGuests";
-$result = $conn->query($sql);
-}
-else 
-if (value == 5) {
-    $sql = "UPDATE id, firstname, lastname FROM MyGuests";
-$result = $conn->query($sql);
-}
-else 
-if (value == 6) {
-    $sql = "UPDATE id, firstname, lastname FROM MyGuests";
-$result = $conn->query($sql);
-}
 
+    $sql = "SELECT Reg, Brand_Name, DOSAGE_FORM, Maximum_Retail_Price_Rs FROM products";
+$result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
      echo "<table><tr><th>ID</th><th>Name</th></tr>";
      // output data of each row
      while($row = $result->fetch_assoc()) {
-         echo "<tr><td>" . $row["id"]. "</td><td>" . $row["firstname"]. " " . $row["lastname"]. "</td></tr>";
+         echo "<tr><td>" . $row["Reg"].  "</td><td>" . $row["Brand_Name"].  "/td><td> " . $row["DOSAGE_FORM"].  "/td><td> " . $row["Maximum_Retail_Price_Rs"] "</td></tr>";
      }
      echo "</table>";
 } else {
      echo "0 results";
 }
+
+
 
 $conn->close();
 ?>  
