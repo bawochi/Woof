@@ -1,0 +1,30 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+<style>
+.error {color: #FF0000;}
+</style>
+</head>
+<body> 
+<?PHP
+$user_name = "root";
+$password = "";
+$database = "PIMS";
+$server = "127.0.0.1";
+$db_handle = mysqli_connect($server, $user_name, $password);
+$db_found = mysqli_select_db($db_handle,$database);
+$query = "select Reg, Brand_Name, Generic_Name, Maximum_Retail_Price_Rs from products";
+if ($stmt = $db_handle->prepare($query)) {
+    $stmt->execute();
+    $stmt->bind_result($Reg, $Brand_Name, $Generic_Name, $Maximum_Retail_Price_Rs);
+    while ($stmt->fetch()) {
+echo $Reg; echo "<br>";
+echo $Brand_Name; echo "<br>";
+echo $Generic_Name; echo "<br>";
+echo $Maximum_Retail_Price_Rs; echo "<br>";
+       }
+    $stmt->close();
+}
+?>
+</body>
+</html>
